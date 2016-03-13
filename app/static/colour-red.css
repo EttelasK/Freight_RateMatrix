@@ -1,0 +1,23 @@
+/*******************************************************************************************************************
+*  Colors and CSS3                                                                                                    
+*******************************************************************************************************************/
+a#logo, header nav li.active a, header nav li a:hover, #intro h1, h3{
+	color:#da113b !important;
+}
+a{
+	color:#da113b;
+}
+a.button{
+	border:1px solid #cc0b26;
+	background:#cc0b26;
+	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #e71753), color-stop(100%, #cc0b26));
+	background-image:-webkit-linear-gradient(top, #e71753, #cc0b26);
+	background-image:-moz-linear-gradient(top, #e71753, #cc0b26);
+	background-image:-ms-linear-gradient(top, #e71753, #cc0b26);
+	background-image:-o-linear-gradient(top, #e71753, #cc0b26);
+	background-image:linear-gradient(top, #e71753, #cc0b26);
+}
+a.button span{
+	border-top:1px solid #ff5b8a;
+	text-shadow:0 -1px -1px #cc0b26;
+}

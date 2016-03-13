@@ -1,0 +1,282 @@
+{% extends 'freight/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Fuel Surcharge | {{block.super}}{% endblock %}
+
+{% block sidenav %}
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="{% url 'freight:index' %}">Home</a></li>
+            <li><a href="{% url 'freight:rate_history' %}">View Rate History</a></li>
+            <li><a href="{% url 'freight:location_all' %}">View all Locations<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="{% url 'freight:fuel_surcharge' %}">View Fuel Surcharge</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Add a User</a></li>
+            <li><a href="">Approve Rates</a></li>
+            <li><a href="">Settings & Permissions</a></li>
+          </ul>
+        </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h2 class="sub-header">Fuel Surcharge</h2>
+        <p>This week's National U.S. Average is: <a href="http://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm">${{fuel}}</a>.  Based on the below table, this week's surcharge will be: ${{surcharge}}.</p>
+        <br>
+        <table class="table table-fixed">
+            <thead>
+            <tr>
+                <th class="col-xs-5">National U.S. Average Price per Gallon (Diesel Fuel)</th>
+                <th class="col-xs-5">Fuel Surcharge Applicable (Cents per mile)</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class ="col-xs-5">$1.750 to $1.949</td>
+                    <td class="col-xs-5">$0.10</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$1.950 to $1.999</td>
+                    <td class="col-xs-5">$0.15</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.000 to $2.049</td>
+                    <td class="col-xs-5">$0.16</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.050 to $2.099</td>
+                    <td class="col-xs-5">$0.17</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.100 to $2.149</td>
+                    <td class="col-xs-5">$0.18</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.150 to $2.199</td>
+                    <td class="col-xs-5">$0.19</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.200 to $2.249</td>
+                    <td class="col-xs-5">$0.20</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.250 to $2.299</td>
+                    <td class="col-xs-5">$0.21</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.300 to $2.349</td>
+                    <td class="col-xs-5">$0.22</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.350 to $2.399</td>
+                    <td class="col-xs-5">$0.23</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.400 to $2.449</td>
+                    <td class="col-xs-5">$0.24</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.450 to $2.499</td>
+                    <td class="col-xs-5">$0.25</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.500 to $2.549</td>
+                    <td class="col-xs-5">$0.26</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.550 to $2.599</td>
+                    <td class="col-xs-5">$0.27</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.600 to $2.649</td>
+                    <td class="col-xs-5">$0.28</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.650 to $2.699</td>
+                    <td class="col-xs-5">$0.29</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.700 to $2.749</td>
+                    <td class="col-xs-5">$0.30</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.750 to $2.799</td>
+                    <td class="col-xs-5">$0.31</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.800 to $2.849</td>
+                    <td class="col-xs-5">$0.32</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.850 to $2.899</td>
+                    <td class="col-xs-5">$0.33</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.900 to $2.949</td>
+                    <td class="col-xs-5">$0.34</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$2.950 to $2.999</td>
+                    <td class="col-xs-5">$0.35</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.00 to $3.049</td>
+                    <td class="col-xs-5">$0.36</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.05 to $3.099</td>
+                    <td class="col-xs-5">$0.37</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.10 to $3.149</td>
+                    <td class="col-xs-5">$0.38</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.15 to $3.199</td>
+                    <td class="col-xs-5">$0.39</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.20 to $3.249</td>
+                    <td class="col-xs-5">$0.40</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.25 to $3.299</td>
+                    <td class="col-xs-5">$0.41</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.30 to $3.349</td>
+                    <td class="col-xs-5">$0.42</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.35 to $3.399</td>
+                    <td class="col-xs-5">$0.43</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.40 to $3.449</td>
+                    <td class="col-xs-5">$0.44</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.45 to $3.499</td>
+                    <td class="col-xs-5">$0.45</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.55 to $3.599</td>
+                    <td class="col-xs-5">$0.47</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.65 to $3.699</td>
+                    <td class="col-xs-5">$0.49</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.70 to $3.749</td>
+                    <td class="col-xs-5">$0.50</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.75 to $3.799</td>
+                    <td class="col-xs-5">$0.51</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.80 to $3.849</td>
+                    <td class="col-xs-5">$0.52</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.85 to $3.899</td>
+                    <td class="col-xs-5">$0.53</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.90 to $3.949</td>
+                    <td class="col-xs-5">$0.54</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$3.95 to $3.999</td>
+                    <td class="col-xs-5">$0.55</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.00 to $4.049</td>
+                    <td class="col-xs-5">$0.56</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.05 to $4.099</td>
+                    <td class="col-xs-5">$0.57</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.10 to $4.149</td>
+                    <td class="col-xs-5">$0.58</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.15 to $4.199</td>
+                    <td class="col-xs-5">$0.59</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.20 to $4.249</td>
+                    <td class="col-xs-5">$0.60</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.25 to $4.299</td>
+                    <td class="col-xs-5">$0.61</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.30 to $4.349</td>
+                    <td class="col-xs-5">$0.62</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.35 to $4.399</td>
+                    <td class="col-xs-5">$0.63</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.40 to $4.449</td>
+                    <td class="col-xs-5">$0.64</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.45 to $4.499</td>
+                    <td class="col-xs-5">$0.65</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.50 to $4.549</td>
+                    <td class="col-xs-5">$0.66</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.55 to $4.599</td>
+                    <td class="col-xs-5">$0.67</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.60 to $4.649</td>
+                    <td class="col-xs-5">$0.68</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.65 to $4.699</td>
+                    <td class="col-xs-5">$0.69</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.70 to $4.749</td>
+                    <td class="col-xs-5">$0.70</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.75 to $4.799</td>
+                    <td class="col-xs-5">$0.71</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.80 to $4.849</td>
+                    <td class="col-xs-5">$0.72</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.85 to $4.899</td>
+                    <td class="col-xs-5">$0.73</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.90 to $4.949</td>
+                    <td class="col-xs-5">$0.74</td>
+                </tr>
+                <tr>
+                    <td class ="col-xs-5">$4.95 to $4.999</td>
+                    <td class="col-xs-5">$0.75</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends 'freight/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Welcome | {{block.super}}{% endblock %}
+
+<style>
+    {% block style %}
+
+    {% endblock %}
+</style>
+
+{% block sidenav %}
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="{% url 'freight:index' %}">Home<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'freight:rate_history' %}">View Rate History</a></li>
+            <li><a href="{% url 'freight:location_all' %}">View all Locations</a></li>
+            <li><a href="{% url 'freight:fuel_surcharge' %}">View Fuel Surcharge</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Add a User</a></li>
+            <li><a href="">Approve Rates</a></li>
+            <li><a href="">Settings & Permissions</a></li>
+          </ul>
+        </div>
+{% endblock %}
+
+    {% block ratelookup %}
+        <div class="row">
+            <h2 class="sub-header">Rate Viewer</h2>
+            <div class="col-md-4">
+                <form method="POST">{% csrf_token %}
+                    {{ form_lookup|crispy }}
+                    {% if lane_rate %}
+                    <p>Distance: {{mileage}} miles</p>
+                    <p>Average fuel price this week is: ${{surcharge}}</p>
+                    {% endif %}
+                    <button class="btn btn-primary" type="submit">View Rates</button>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block content %}
+<br>
+        <div class="table-responsive">
+        {% if carrier and not lane_rate %}
+            <table class="table table-striped">
+                <tr>
+                    <th></th>
+        {% for c in carrier %}
+                        <th id="lookup"><a href="{% url 'freight:carrier_detail' c.id %}">{{ c.name }}</a></th>
+        {% endfor %}
+                </tr>
+            </table>
+        {% elif carrier and lane_rate %}
+            <table class="table table-striped">
+                <th></th>
+                {% for c in carrier %}
+                {% for r in lane_rate %}
+                {% if r.carrier.name == c.name %}
+                    <th id="lookup"><a href="{% url 'freight:carrier_detail' c.id %}">{{ c.name }}</a></th>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                <tr>
+                    <td>Rate Per Mile</td>
+                {% for c in carrier %}
+                {% for r in lane_rate %}
+                {% if r.carrier.name == c.name %}
+                    <td>${{r.rate}}</td>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                </tr>
+                <tr>
+                    <td>Flat Rate</td>
+                {% for c in carrier %}
+                {% for r in lane_rate %}
+                {% if r.carrier.name == c.name %}
+                    <td>${{r.flat_charge}}</td>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                </tr>
+                <tr>
+                    <td>Fuel Surcharge</td>
+                {% for c in carrier %}
+                {% for r in lane_rate %}
+                {% if r.carrier.name == c.name %}
+                    <td>${{total_fuel}}</td>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                </tr>
+                <tr>
+                    <td>Total Cost</td>
+                {% for c in carrier %}
+                {% for r in lane_rate %}
+                {% if r.carrier.name == c.name %}
+                    <td>${{r.flat_charge|add:"total_fuel"}}</td>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                </tr>
+            </table>
+        {% else %}
+            <p>Add a Carrier</p>
+        {% endif %}
+        </div>
+<br>
+    <div class="row">
+        <div class="panel-default col-md-4">
+            <div class="panel-heading text-align-center" role="tab" id="headingOne">
+                <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Add a new Carrier
+                    </a>
+                </h2>
+            </div>
+            <br>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <form method="POST">{% csrf_token %}
+                    {{ form_carrier|crispy}}
+                    <button class="btn btn-primary" type="submit">Save Carrier</button>
+                </form>
+            </div>
+          </div>
+        <div class="panel-default col-md-4">
+            <div class="panel-heading text-align-center" role="tab" id="headingTwo">
+                <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Add a new Lane
+                    </a>
+                </h2>
+            </div>
+            <br>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <form method="POST">{% csrf_token %}
+                    {{ form_lane|crispy }}
+                    <button class="btn btn-primary" type="submit">Save Lane</button>
+                    <br>Don't see your location?
+                    <br>Add one <a href="{% url 'freight:location_all' %}">here</a>
+                </form>
+            </div>
+          </div>
+        <div class="panel-default col-md-4">
+            <div class="panel-heading text-align-center" role="tab" id="headingThree">
+                <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Add a new Rate
+                    </a>
+                </h2>
+            </div>
+            <br>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <form method="POST">{% csrf_token %}
+                    {{ form_rate|crispy }}
+                    <button class="btn btn-primary" type="submit">Save Rate</button>
+                </form>
+            </div>
+          </div>
+    </div>
+
+    {% endblock %}

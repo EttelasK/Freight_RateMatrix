@@ -1,0 +1,160 @@
+/*******************************************************************************************************************
+*  IMPORT OTHER STYLES
+*******************************************************************************************************************/
+@import url(reset.css);
+@import url(http://fonts.googleapis.com/css?family=Asap:400, 700, 400italic, 700italic&subset=latin, latin-ext);
+/*
+Choose the colour you wish to use => colour-blue.css is default
+@import url(colour-blue.css);
+@import url(colour-green.css);
+@import url(colour-orange.css);
+@import url(colour-purple.css);
+@import url(colour-red.css);
+@import url(colour-turquoise-green.css);
+*/
+@import url(colour-turquoise-green.css);
+
+/*******************************************************************************************************************
+*  BASE
+*******************************************************************************************************************/
+/*html{background:#fff url("img/intro-background.png") no-repeat 50% 125px;}*/
+body{background:url("img/footer-background.png") repeat-x bottom; color:#545454; font:normal 13px Helvetica,Arial,Tahoma,Verdana;}
+p{line-height:1.7em; margin-bottom:15px;}
+address{font-style:normal; padding-bottom:15px;}
+
+/*******************************************************************************************************************
+*  TABLES
+*******************************************************************************************************************/
+table.border, table.borderMain {border:2px solid #d4d4d4; background-color: #FAFAFA}
+table.border{width:230px;}
+table.borderMain{align:left;}
+table.border th, td {padding:10px;}
+table.border th {width:40px;}
+
+/*******************************************************************************************************************
+*  LINKS
+*******************************************************************************************************************/
+a, a:link, a:focus{outline:0; text-decoration:underline;}
+a:hover{color:#000; text-decoration:none;}
+
+/*******************************************************************************************************************
+*  H1 - H3
+*******************************************************************************************************************/
+h1, h2, h3, h4{line-height:1.5em; margin-bottom:15px;}
+h1{font-size:4.8em;}
+h2{font-size:2.1em; font-weight:bold;}
+h3{font-size:0.9em; margin-bottom:3px;}
+h4{font-size:1.2em; font-weight:bold;}
+
+/*******************************************************************************************************************
+*  HEADER
+*******************************************************************************************************************/
+header{height:125px; position:relative;}
+header a#logo{font-size:2.8em; line-height:125px; text-decoration:none; font-weight:700; display:block; position:absolute; top:0; left:0;}
+header a#logo:hover{text-decoration:none; color:#000;}
+header nav ul{position:absolute; top:45px; right:-20px;}
+header nav li{float:left; margin-left:5px;}
+header nav li a{float:left; color:#818181; display:block; padding:10px 15px; text-decoration:none !important;}
+header nav li.active a{font-weight:bold;}
+
+/*******************************************************************************************************************
+*  INTRO
+*******************************************************************************************************************/
+#intro{display:block; width:100%; height:293px; margin-bottom:50px; position:relative; clear:both;}
+#intro h1{margin-bottom:0; padding-top:30px; font-weight:700;}
+#intro p{font-size:1.3em; font-weight:bold; margin-bottom:20px;}
+#intro p a{color:#545454; text-decoration:none;}
+#intro p a:hover{color:#000; text-decoration:none;}
+#intro img{position:absolute; bottom:0; right:0;}
+
+/*******************************************************************************************************************
+*  CONTENT
+*******************************************************************************************************************/
+#content{padding:0 0 50px;}
+#content .cols{border-bottom:1px solid #e7e7e7; padding-bottom:30px;}
+#content h2.withIcon{padding-left:40px;}
+#content h2.withIcon.icon1{no-repeat 0 5px; padding-left:50px;}
+#content h2.withIcon.icon2{background:url("img/icon2.png") no-repeat 0 5px;}
+#content h2.withIcon.icon3{background:url("img/icon3.png") no-repeat 0 5px;}
+
+/*******************************************************************************************************************
+*  TWITTER BAR
+*******************************************************************************************************************
+#twitterBar{background:#fafbfb; border:1px solid #e3e5e6; padding:20px 20px 20px 110px; margin-top:50px; position:relative;}
+#twitterBar .icon{position:absolute; bottom:20px; left:20px; display:block; width:58px; height:62px; background:url("img/twitter-icon.png") no-repeat;}
+#twitterBar p{margin:0;}
+#twitterBar small{color:#acacac; font-size:12px;}*/
+
+/*******************************************************************************************************************
+*  FOOTER
+*******************************************************************************************************************/
+footer{color:#929292; font-size:0.9em;}
+footer p{height:60px; margin:0; line-height:60px;}
+footer a, footer a:link{color:#565656;}
+footer a.contact{display:inline-block; padding-left:25px; background:url("img/contact-us.png") no-repeat 0 50%; margin-right:15px;}
+footer a.twitter{display:inline-block; padding-left:25px; background:url("img/twitter.png") no-repeat 0 50%;}
+
+/*******************************************************************************************************************
+*  OTHER STYLES
+*******************************************************************************************************************/
+#wrap{margin:0 auto; position:relative; width:940px;}
+
+a.button{display:inline-block; color:#fff; text-decoration:none; height:32px; line-height:30px; text-align:center; width:200px; text-decoration:none; cursor:pointer;}
+a.button span{display:inline-block; padding:0 15px; font-size:1.0em; height:32px;}
+a.button.large{height:40px; line-height:38px;}
+a.button.large span{padding:0 20px; height:40px; font-weight:bold;}
+a.button:hover{background:#666; border-color:#666;}
+a.button:hover span{border-color:#999;}
+
+.gallery{margin-bottom:30px;}
+.gallery .photo{margin-left:15px;}
+.gallery .photo:first-child{margin-left:0;}
+
+a.photo{display:block; float:left;}
+a.photo img{display:block; float:left; border:1px solid #e7e7e7; padding:4px; background:#fff;}
+a.photo:hover img{border-color:#999;}
+
+.col1-3{margin-left:20px; float:left;}
+.col1-3 p:last-child, .col2-3 p:last-child{margin-bottom:0;}
+.col1-3:first-child{margin-left:0;}
+.colLeft{margin-right:20px; float:left;}
+.colRight{width:650px; float:right;}
+
+.marginBottom30{margin-bottom:30px;}
+
+/*******************************************************************************************************************
+*  Colors and CSS3
+*******************************************************************************************************************/
+a#logo, #intro h1{font-family:Asap,Helvetica,Arial,Tahoma,Verdana; font-weight:700; font-style:italic;}
+
+a.photo img{
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	}
+
+a.button, a.button span{
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+	border-radius:7px;
+	}
+
+a.button.large, a.button.large span, #twitterBar{
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	}
+
+a.button:hover{
+	background:#666;
+	border-color:#666;
+	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #333), color-stop(100%, #000));
+	background-image:-webkit-linear-gradient(top, #333, #000);
+	background-image:-moz-linear-gradient(top, #333, #000);
+	background-image:-ms-linear-gradient(top, #333, #000);
+	background-image:-o-linear-gradient(top, #333, #000);
+	background-image:linear-gradient(top, #333, #000);
+	}
+
+a.button:hover span{text-shadow:0 0 0;}
+

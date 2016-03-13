@@ -1,0 +1,66 @@
+{% extends 'freight/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Locations | {{block.super}}{% endblock %}
+
+{% block sidenav %}
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="{% url 'freight:index' %}">Home</a></li>
+            <li><a href="{% url 'freight:rate_history' %}">View Rate History</a></li>
+            <li class="active"><a href="{% url 'freight:location_all' %}">View all Locations<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'freight:fuel_surcharge' %}">View Fuel Surcharge</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Add a User</a></li>
+            <li><a href="">Approve Rates</a></li>
+            <li><a href="">Settings & Permissions</a></li>
+          </ul>
+        </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h2 class="sub-header">All Locations</h2>
+        <table class="table table-fixed">
+            <thead>
+            <tr>
+                <th class="col-xs-4">City</th>
+                <th class="col-xs-5">State</th>
+                <th class="col-xs-2">Zip Code</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for l in loc %}
+                <tr>
+                    <td class ="col-xs-4">{{l.city}}</td>
+                    <td class="col-xs-5">{{l.state}}</td>
+                    <td class="col-xs-2">{{l.zip}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="panel-default col-md-4">
+            <div class="panel-heading text-align-center" role="tab" id="headingOne">
+                <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Add a new Location
+                    </a>
+                </h2>
+            </div>
+            <br>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <form method="POST">{% csrf_token %}
+                    {{ form|crispy}}
+                    <button class="btn btn-primary" type="submit">Save Location</button>
+                </form>
+            </div>
+          </div>
+    </div>
+{% endblock %}

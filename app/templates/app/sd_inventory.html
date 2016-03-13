@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+</head>
+<body>
+ <h1>Inventory for {{customer}} in {{city}}</h1>
+
+<h2>Item List</h2>
+
+
+<table>
+    <thead><tr>
+        <th>Item</th><th>Amt.</th><th>Part Info</th>
+    </tr></thead>
+        <tbody>
+        {% for i in items %}
+        <tr>
+        <td>{{i.0}}</td><td>{{i.1}}</td><td>{% for part_info in i.2 %} <li> {{ part_info }}</li>  {% endfor %}</td>
+    </tr>
+        {% endfor %}
+        </tbody>
+</table>
+
+<h2>Part List</h2>
+<table>
+    <thead><tr>
+        <th>Part</th><th>Amt.</th><th>Factory Price Info</th>
+    </tr></thead>
+        <tbody>
+        {% for i in part_tots %} <!-- a json list of parts calculated in view, w/ factory info -->
+        <tr>
+        <td>{{i}}</td><td>{{i.amt}}</td><td>Parts</td>
+    </tr>
+        {% endfor %}
+        </tbody>
+</table>
+
+<h2>Shipping Costs</h2>
+<table>
+    <thead><tr>
+        <th>Part</th><th>Amt.</th><th>Shipping Price Info</th>
+    </tr></thead>
+        <tbody>
+        {% for i in part_tots %} <!-- same json list of parts calculated in view, w/ factory info -->
+        <tr>
+        <td>{{i}}</td><td>{{i.amt}}</td><td>Parts</td>
+    </tr>
+        {% endfor %}
+        </tbody>
+</table>
+
+
+</body>
+</html>

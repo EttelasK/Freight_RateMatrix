@@ -1,0 +1,64 @@
+{% extends 'freight/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block sidenav %}
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="{% url 'freight:index' %}">Home<span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'freight:rate_history' %}">View Rate History</a></li>
+            <li><a href="{% url 'freight:location_all' %}">View all Locations</a></li>
+            <li><a href="{% url 'freight:fuel_surcharge' %}">View Fuel Surcharge</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Add a User</a></li>
+            <li><a href="">Approve Rates</a></li>
+            <li><a href="">Settings & Permissions</a></li>
+          </ul>
+        </div>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h2 class="sub-header">TTX Carrier | {{ name.name }}</h2>
+        <div class="col-md-4 ">
+            <h3>Edit Carrier</h3>
+            <p>Last edited on: {{name.add_date}}</p>
+            <form method="POST">{% csrf_token %}
+                {{ form_carrier|crispy }}
+                <button class="btn btn-primary" type="submit">Save</button>
+            </form>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+        <div class="panel-default col-md-6">
+            <h3 class="">Contacts for {{name.name}}:</h3>
+            {% if contact_list %}
+            <ol>
+                {% for c in contact_list %}
+                <li>{{c.full_name}}: {{c.email}} | {{c.phone}}</li>
+                {% endfor %}
+            </ol>
+            {% else %}
+            <ul>
+                <li>Enter a contact below</li>
+            </ul>
+            {% endif %}
+            <div class="panel-heading text-align-center" role="tab" id="headingOne">
+                <h2 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Add a Contact for {{name.name}}
+                    </a>
+                </h2>
+            </div>
+            <br>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <form method="POST">{% csrf_token %}
+                    {{ form_contact|crispy}}
+                    <button class="btn btn-primary" type="submit">Save Contact</button>
+                </form>
+            </div>
+          </div>
+    </div>
+{% endblock %}

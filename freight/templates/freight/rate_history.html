@@ -1,0 +1,55 @@
+{% extends 'freight/base.html' %}
+
+{% block head_title %}History | {{block.super}}{% endblock %}
+
+{% block sidenav %}
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="{% url 'freight:index' %}">Home</a></li>
+            <li class="active"><a href="{% url 'freight:rate_history' %}">View Rate History</a></li>
+            <li><a href="{% url 'freight:location_all' %}">View all Locations</a></li>
+            <li><a href="{% url 'freight:fuel_surcharge' %}">View Fuel Surcharge</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Add a User</a></li>
+            <li><a href="">Approve Rates</a></li>
+            <li><a href="">Settings & Permissions</a></li>
+          </ul>
+        </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row col-md-11">
+        <h2 class="sub-header">Rate History</h2>
+        {% if lane_rates %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+            <tr>
+                <th>Carrier</th>
+                <th>Lane</th>
+                <th>Old Rate</th>
+                <th>New Rate</th>
+                <th>Updated On</th>
+                <th>User</th>
+            </tr>
+            {% for rt in lane_rates %}
+                <tr>
+                    <td>{{rt.carrier}}</td>
+                    <td>{{rt.lane}}</td>
+                    <td>${{rt.old_rate}}</td>
+                    <td>${{rt.rate}}</td>
+                    <td>{{rt.add_date}}</td>
+                    <td>{{rt.user}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+        {% else %}
+        <p>No rates.  Need to add a rate.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

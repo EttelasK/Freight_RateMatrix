@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+<div id="wrap">
+  <header><a id="logo" href="#">Company Name Here</a>
+    <nav>
+      <ul>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- / #intro -->
+  <div id="content">
+    <div class="colLeft marginBottom30 clearFix">
+      <table class="border"><tr><td>
+      <div class="col1-3">
+        <h4 class="withIcon icon1">Updates & Notifications</h4>
+        <p><li><a href="#">You're all set! No new notifications at this time.</li></p>
+      </div>
+        </td></tr></table>
+    </div>
+    <table class="borderMain"><tr><td>
+    <div class="colRight">
+        <h2>Warehouses for {{customer}}</h2>
+        {% for wh in whs %}
+        <ul><a href="{% url 'warehouse' wh.id %}">{{wh.city}}</a></ul>
+        {% endfor %}
+    </div>
+    </td></tr></table>
+
+    <div class="marginBottom30 clearFix">
+      <div class="colLeft">
+        <div class="col1-3">
+        <table class="border"><tr><td>
+        <p><a href="#" class="button"><span>Suppliers & Purchasing</span></a></p>
+        <p><a href="#" class="button"><span>Manufacturing & Production</span></a></p>
+        <p><a href="#" class="button"><span>Inventory & Warehouse</span></a></p>
+        <a href="#" class="button"><span>Customers & Sales</span></a>
+        </td></tr></table>
+        </div>
+      </div>
+
+       <!-- <a href="#" class="button"><span>Learn more</span></a> </div>-->
+    </div>
+  </div>
+  <!-- / #container -->
+  <footer>
+    <div class="clearFix">
+      <p class="floatLeft">&copy; 2016 &ndash; <a>emporio</a> &nbsp;/&nbsp; <a href="#" class="contact">Contact us</a></p>
+    </div>
+  </footer>
+</div>
+<!-- / #wrap -->
+</body>
+
+</html>
