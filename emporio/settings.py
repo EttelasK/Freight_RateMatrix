@@ -27,8 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-EMAIL_HOSTS = 'cas1.ttx.com'
-EMAIL_HOST_USER = 'keith.salette@ttx.com'
+EMAIL_HOSTS = ''
+EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
