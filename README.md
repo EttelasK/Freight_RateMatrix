@@ -50,10 +50,10 @@ Rate takes a carrier from the carrier table, a lane from the lane table, lane ty
 -	Flat_Charge: Rate * (Table = Lane, Column = Miles)
 
 # Database Schematic Architecture
-
+![alt text](https://github.com/EttelasK/Freight_RateMatrix/blob/master/readme_img/architecture.png)
 
 # Page Navigation Flow Chart
-
+![alt text](https://github.com/EttelasK/Freight_RateMatrix/blob/master/readme_img/page_flow.png)
 
 Page, Index (Rate Viewer):
 ----------
