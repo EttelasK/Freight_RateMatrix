@@ -75,7 +75,7 @@ There is one form at the bottom of the screen which the user may open.  This for
 
 Page, Fuel Surcharge:
 ----------
-The fuel surcharge page allows the user to view this week’s National U.S. Average price per gallon and see what the associated fuel surcharge is.  The National U.S. Average is scrapped from the [U.S. Energy Information Administration](http://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm.) There is a link to the website on the fuel surcharge page where the “This week’s National U.S. Average is: $X.XXX.” is displayed.  This calculated fuel surcharge price is used and displayed on the Home (index) page when using the Rate View form to calculate the total estimated cost. 
+The fuel surcharge page allows the user to view this week’s National U.S. Average price per gallon and see what the associated fuel surcharge is.  The National U.S. Average is scrapped from the [U.S. Energy Information Administration.](http://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm) There is a link to the website on the fuel surcharge page where the “This week’s National U.S. Average is: $X.XXX.” is displayed.  This calculated fuel surcharge price is used and displayed on the Home (index) page when using the Rate View form to calculate the total estimated cost. 
  
 Page, Rate History:
 ----------
